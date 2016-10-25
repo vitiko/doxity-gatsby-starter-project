@@ -1,5 +1,5 @@
-# gatsby-starter-documentation
-Starter for building documentation site with GatsbyJS
+# Doxity Starter Project
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-`gatsby new gatsby-documentation-site https://github.com/gatsbyjs/gatsby-starter-documentation`
+A starting point for Doxity projects.
+
+This is a [Gatsby](https://github.com/gatsbyjs/gatsby) project.

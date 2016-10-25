@@ -1,33 +1,28 @@
 {
-  "name": "docs-site",
-  "description": "Gatsby example site",
+  "name": "doxity-gatsby-starter-project",
+  "description": "Doxity Example Site",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Chris Hitchcott <hitchcott@gmail.com>",
   "dependencies": {
-    "chroma-js": "^0.7.2",
-    "color-pairs-picker": "^1.3.5",
-    "gatsby": "^0.12.6",
-    "lodash": "^4.15.0",
     "react-document-title": "^2.0.1",
-    "react-motion": "^0.1.0",
-    "react-responsive-grid": "^0.3.3",
-    "react-typography": "^0.14.0",
-    "typography": "^0.14.0",
-    "typography-plugin-code": "^0.14.0",
-    "underscore.string": "^3.2.2"
+    "react-markdown": "^2.4.2",
+    "semantic-ui-react": "^0.56.13",
+    "sort-by": "^1.1.1"
   },
   "devDependencies": {
-    "gh-pages": "^0.11.0"
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
+    "gatsby": "^0.12.18"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
-  "main": "n/a",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "develop": "gatsby develop",
-    "build": "gatsby build",
-    "deploy": "gatsby build --prefix-links && gh-pages -d public"
+    "build": "gatsby build"
   }
 }
