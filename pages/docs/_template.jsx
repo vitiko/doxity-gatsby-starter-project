@@ -29,7 +29,7 @@ export default class Docs extends Component {
   render() {
     return (
       <Grid>
-        <Grid.Column only="tablet computer" width={4}>
+        <Grid.Column className="mobile hidden" width={4}>
           {this.renderDocMenu()}
         </Grid.Column>
         <Grid.Column stretched computer={12} tablet={12} mobile={16}>
