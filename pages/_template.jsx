@@ -42,14 +42,14 @@ export default class Index extends Component {
           {this.props.children}
         </Container>
         <Container className="footer">
-          <Segment size="small" attached="top" compact>
+          <Segment secondary size="small" attached="top" compact>
             <Grid stackable>
               <Grid.Row>
                 <Grid.Column width={6}>
-                  {config.author} - {config.license} {new Date(config.buildTime).getFullYear()}
+                  <b>&copy; {config.author}</b> - {config.license}, {new Date(config.buildTime).getFullYear()}
                 </Grid.Column>
                 <Grid.Column width={10} textAlign="right">
-                  Built {new Date(config.buildTime).toLocaleDateString()} using Solidity {config.compiler}
+                  Built using <b>Solidity {config.compiler}</b> on {new Date(config.buildTime).toLocaleDateString()}
                 </Grid.Column>
               </Grid.Row>
             </Grid>

@@ -1,24 +1,5 @@
-# Digix Core 2.0
+# Doxity Project
 
-### Blockchain Asset Tokenization Platform
+This is a new doxity project.
 
-Copyright Digix Global. Do not distribute.
-
-## Usage
-
-* Have node installed
-* `npm i -g truffle ethereumjs-testrpc`
-* Clone this repo
-* Run `testrpc`
-* In another window run `truffle test`
-* TODO: `truffle deploy` for different networks
-
-## TODO
-
-```
-- Final Deploy Step: Register Controller Interfaces
-- EVM Control (TestRPC Controller)
-- REPL Inline if test fails
-- Integrate some accounts into
-- Update ETH Sigma for account automation
-```
+This page will be automatically replace with you project's `README.md`.
