@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
 
+@import './responsive.css';
+
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -37,4 +39,18 @@ pre {
       overflow: visible;
     }
   }
+}
+
+.pusher {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.pusher > .container:not(.footer) {
+  flex: 1;
+}
+.pusher > .footer {
+  height: auto;
+  margin-top: 2em;
 }

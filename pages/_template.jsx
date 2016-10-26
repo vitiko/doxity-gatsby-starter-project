@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
-import { Menu, Container } from 'semantic-ui-react'
+import { Menu, Container, Label, Segment, Grid } from 'semantic-ui-react'
 
 import '../css/style.scss'
 
@@ -17,10 +17,14 @@ export default class Index extends Component {
     // TODO active page
     // TODO dynamic github link
     return (
-      <div style={{ paddingTop: '60px' }}>
+      <div style={{ paddingTop: '60px' }} className="pusher">
         <Menu inverted fixed="top">
           <Container>
-            <Menu.Item header as={Link} to={prefixLink('/')}>{config.siteTitle}</Menu.Item>
+            <Menu.Item header as={Link} to={prefixLink('/')}>
+              {config.name}
+              <Label color='grey'>{config.version}</Label>
+            </Menu.Item>
+            <Menu.Item className="mobile hidden">{config.description}</Menu.Item>
             <Menu.Menu position="right">
               {/* TODO render currently selected documentaiton item with dropdown */}
               {onIndex ?
@@ -36,6 +40,20 @@ export default class Index extends Component {
         </Menu>
         <Container>
           {this.props.children}
+        </Container>
+        <Container className="footer">
+          <Segment size="small" attached="top" compact>
+            <Grid stackable>
+              <Grid.Row>
+                <Grid.Column width={6}>
+                  {config.author} - {config.license} {new Date(config.buildTime).getFullYear()}
+                </Grid.Column>
+                <Grid.Column width={10} textAlign="right">
+                  Built {new Date(config.buildTime).toLocaleDateString()} using Solidity {config.compiler}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
         </Container>
       </div>
     )
