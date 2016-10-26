@@ -29,9 +29,9 @@ export default class Contract extends Component {
     const { contract } = this.props
     return (
       <div className="contract">
-        <Header as="h1" floated="left">
-          {contract.title || contract.fileName}
-          {(contract.title && contract.fileName) &&
+        <Header as="h2" floated="left">
+          {contract.title || contract.name}
+          {contract.fileName &&
             <Header.Subheader>
               {contract.fileName}
             </Header.Subheader>

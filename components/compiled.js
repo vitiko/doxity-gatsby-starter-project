@@ -15,7 +15,6 @@ export default class Compiled extends Component {
         }
         {contract.opcodes &&
           <div className="opcodes">
-            <hr />
             <h3>Opcodes</h3>
             <pre className="wrap">
               <code>{contract.opcodes}</code>

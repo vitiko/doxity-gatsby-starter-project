@@ -13,7 +13,7 @@ pre.wrap {
 }
 
 code {
-  padding: 2px;
+  padding: 0 0.3em;
 }
 
 pre, code {
@@ -26,5 +26,15 @@ pre, code {
   }
 }
 pre {
-  padding:1em;
+  padding: 1em;
+}
+
+.vertical.menu {
+  .item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &.active{
+      overflow: visible;
+    }
+  }
 }

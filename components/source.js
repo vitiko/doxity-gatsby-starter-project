@@ -2,7 +2,6 @@ import React, { PropTypes, Component } from 'react'
 
 export default class Source extends Component {
   render() {
-    console.log('render code', this);
     const { contract } = this.props
     return (
       <div className="source">
