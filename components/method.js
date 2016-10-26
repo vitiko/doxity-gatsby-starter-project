@@ -43,15 +43,6 @@ export default class Method extends Component {
         {method.details && <ReactMarkdown containerTagName="p" source={method.details} />}
         {(method.inputs.length || method.outputs) &&
           <Table definition>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell />
-                <Table.HeaderCell>Index</Table.HeaderCell>
-                <Table.HeaderCell>Type</Table.HeaderCell>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Description</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
             <Table.Body>
               {method.inputs && this.renderParams(method.inputs, 'Inputs')}
               {method.outputs && this.renderParams(method.outputs, 'Outputs')}
