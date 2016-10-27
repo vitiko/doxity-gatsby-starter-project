@@ -4,6 +4,8 @@ import React, { Component, PropTypes } from 'react'
 import DocumentTitle from 'react-document-title'
 import { prefixLink } from 'gatsby-helpers'
 
+import favicon from './css/favicon.png'
+
 const BUILD_TIME = new Date().getTime()
 
 export default class Html extends Component {
@@ -26,6 +28,7 @@ export default class Html extends Component {
           />
           <title>{title}</title>
           <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" />
+          <link href={favicon} rel="icon" />
           {css}
         </head>
         <body>
