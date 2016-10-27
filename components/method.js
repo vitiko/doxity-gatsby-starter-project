@@ -7,7 +7,7 @@ export default class Method extends Component {
     return params.map((param, i) => {
       const inputs = type === 'Inputs'
       return (
-        <Table.Row negative={!inputs} positive={inputs}>
+        <Table.Row key={i} negative={!inputs} positive={inputs}>
           {i === 0 ?
             <Table.Cell rowSpan={params.length}>{type}</Table.Cell>
           :
@@ -15,13 +15,11 @@ export default class Method extends Component {
           }
           <Table.Cell>{`${i}`}</Table.Cell>
           <Table.Cell>{param.type}</Table.Cell>
-          {param.name &&
-            <Table.Cell>
-              <code>{param.name}</code>
-            </Table.Cell>
-          }
           <Table.Cell>
-            <ReactMarkdown containerTagName="p" source={param.description} />
+            {param.name && <code>{param.name}</code>}
+          </Table.Cell>
+          <Table.Cell>
+            {param.description && <ReactMarkdown source={param.description} />}
           </Table.Cell>
         </Table.Row>
       )
@@ -43,10 +41,12 @@ export default class Method extends Component {
           {method.constant && ', constant'}
         </Label>
         <Header style={{ marginTop: '-1.5rem' }} as="h3">
-          <code>{contract.name}{method.name ? `.${method.name}` : ''}</code>
+          <code>{method.name || contract.name}</code>
+          {' '}
+          {method.signatureHash && <code className="signature">{method.signatureHash}</code>}
         </Header>
         {method.notice && <ReactMarkdown containerTagName="h4" source={method.notice} />}
-        {method.details && <ReactMarkdown containerTagName="p" source={method.details} />}
+        {method.details && <ReactMarkdown source={method.details} />}
         {(method.inputs.length || method.outputs) &&
           <Table definition>
             <Table.Body>

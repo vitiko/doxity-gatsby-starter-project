@@ -65,7 +65,7 @@ export default class Contract extends Component {
   }
   renderTab(tab, i) {
     if (!tab.available) { return null }
-    return <Menu.Item name={tab.text} active={this.state.tab === i} onClick={() => this.handleTabClick(i)} />
+    return <Menu.Item key={i} name={tab.text} active={this.state.tab === i} onClick={() => this.handleTabClick(i)} />
   }
   renderTabContent() {
     const { contract } = this.props

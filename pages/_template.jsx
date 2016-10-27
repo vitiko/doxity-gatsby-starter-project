@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
-import { Menu, Container, Label, Segment, Grid } from 'semantic-ui-react'
+import { Menu, Container, Label, Segment, Grid, Icon } from 'semantic-ui-react'
 
 import '../css/style.scss'
 
@@ -34,7 +34,7 @@ export default class Index extends Component {
               }
               {config.homepage &&
                 <Menu.Item as={'a'} target="_blank" href={config.homepage}>
-                   Github
+                   <Icon name="home" />
                 </Menu.Item>
               }
             </Menu.Menu>

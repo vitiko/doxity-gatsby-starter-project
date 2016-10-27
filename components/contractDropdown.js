@@ -24,6 +24,7 @@ export default class ContractDropdown extends Component {
           {this.props.pages.map(({ page }) => {
             return (
               <Dropdown.Item
+                key={page.path}
                 as={Link}
                 to={prefixLink(page.path)}
                 text={page.data.name}

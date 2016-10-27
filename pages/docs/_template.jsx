@@ -18,7 +18,7 @@ export default class Docs extends Component {
         {this.props.route.childRoutes.map((child) => {
           const isActive = prefixLink(child.path) === this.props.location.pathname
           return (
-            <Menu.Item as={Link} to={prefixLink(child.path)} active={isActive} onClick={this.handleItemClick}>
+            <Menu.Item key={child.path} as={Link} to={prefixLink(child.path)} active={isActive} onClick={this.handleItemClick}>
               {child.page.data.name}
             </Menu.Item>
           )
