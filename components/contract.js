@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 import { Menu, Header, Divider } from 'semantic-ui-react'
 import Method from './method'
 import Source from './source'
+import Abi from './abi'
 import Compiled from './compiled'
 
 export default class Contract extends Component {
@@ -21,6 +22,7 @@ export default class Contract extends Component {
     const { contract } = this.props
     return [
       () => contract.abiDocs.sort(sortBy('type', 'name')).map(method => <Method method={method} contract={contract} />),
+      () => <Abi contract={contract} />,
       () => <Compiled contract={contract} />,
       () => <Source contract={contract} />,
     ][this.state.tab]()
@@ -44,7 +46,7 @@ export default class Contract extends Component {
         }
         <Divider hidden style={{ clear: 'both' }} />
         <Menu pointing secondary>
-          {['Methods', 'Bytecode', 'Source Code'].map(this.renderTab)}
+          {['Methods', 'ABI', 'Bytecode', 'Source Code'].map(this.renderTab)}
         </Menu>
         {this.renderTabContent()}
       </div>
