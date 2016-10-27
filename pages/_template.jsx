@@ -22,7 +22,7 @@ export default class Index extends Component {
           <Container>
             <Menu.Item header as={Link} to={prefixLink('/')}>
               {config.name}
-              <Label color='grey'>{config.version}</Label>
+              <Label color="grey">{config.version}</Label>
             </Menu.Item>
             <Menu.Item className="mobile hidden">{config.description}</Menu.Item>
             <Menu.Menu position="right">
@@ -32,9 +32,11 @@ export default class Index extends Component {
               :
                 <ContractDropdown pages={docsRoute.childRoutes} location={this.props.location} />
               }
-              <Menu.Item as={'a'} target="_blank" href="https://github.com/gatsbyjs/gatsby">
-                 Github
-              </Menu.Item>
+              {config.homepage &&
+                <Menu.Item as={'a'} target="_blank" href={config.homepage}>
+                   Github
+                </Menu.Item>
+              }
             </Menu.Menu>
           </Container>
         </Menu>
@@ -49,7 +51,7 @@ export default class Index extends Component {
                   <b>&copy; {config.author}</b> - {config.license}, {new Date(config.buildTime).getFullYear()}
                 </Grid.Column>
                 <Grid.Column width={10} textAlign="right">
-                  Built using <b>Solidity {config.compiler}</b> on {new Date(config.buildTime).toLocaleDateString()}
+                  Built using <b>Solidity {config.compiler}</b> on <b>{new Date(config.buildTime).toLocaleDateString()}</b>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

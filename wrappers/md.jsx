@@ -7,7 +7,7 @@ export default class Md extends Component {
     const post = this.props.route.page.data
 
     return (
-      <DocumentTitle title={config.siteTitle}>
+      <DocumentTitle title={config.name}>
         <div className="markdown">
           <h1>{post.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.body }} />

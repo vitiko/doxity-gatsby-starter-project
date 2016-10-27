@@ -15,8 +15,14 @@ export default class Method extends Component {
           }
           <Table.Cell>{`${i}`}</Table.Cell>
           <Table.Cell>{param.type}</Table.Cell>
-          <Table.Cell>{param.name}</Table.Cell>
-          <Table.Cell>{param.description}</Table.Cell>
+          {param.name &&
+            <Table.Cell>
+              <code>{param.name}</code>
+            </Table.Cell>
+          }
+          <Table.Cell>
+            <ReactMarkdown containerTagName="p" source={param.description} />
+          </Table.Cell>
         </Table.Row>
       )
     })

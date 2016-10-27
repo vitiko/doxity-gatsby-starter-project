@@ -1,5 +1,5 @@
-# Doxity Project
+# Digix Core 2.0
 
-This is a new doxity project.
+### Blockchain Asset Tokenization Platform
 
-This page will be automatically replace with you project's `README.md`.
+Copyright Digix Global. Do not distribute.

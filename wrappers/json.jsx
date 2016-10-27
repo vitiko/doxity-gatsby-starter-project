@@ -7,7 +7,7 @@ export default class Json extends Component {
   render() {
     const contract = this.props.route.page.data
     return (
-      <DocumentTitle title={`${contract.name} | ${config.siteTitle}`}>
+      <DocumentTitle title={`${contract.name} | ${config.name}`}>
         <Contract contract={contract} />
       </DocumentTitle>
     )
