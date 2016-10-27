@@ -3,7 +3,7 @@ import { Menu, Header, Divider, Message } from 'semantic-ui-react'
 import Methods from './methods'
 import Source from './source'
 import Abi from './abi'
-import Compiled from './compiled'
+import Bytecode from './bytecode'
 
 const tabs = [
   {
@@ -11,20 +11,32 @@ const tabs = [
     available(contract) {
       return contract.abiDocs && contract.abiDocs.length > 0
     },
+    component(contract) {
+      return <Methods contract={contract} />
+    },
   }, {
     text: 'ABI',
     available(contract) {
       return contract.abi && contract.abi.length > 0
+    },
+    component(contract) {
+      return <Abi contract={contract} />
     },
   }, {
     text: 'Bytecode',
     available(contract) {
       return contract.opcodes || contract.bytecode
     },
+    component(contract) {
+      return <Bytecode contract={contract} />
+    },
   }, {
     text: 'Source Code',
     available(contract) {
       return contract.source
+    },
+    component(contract) {
+      return <Source contract={contract} />
     },
   },
 ]
@@ -57,12 +69,7 @@ export default class Contract extends Component {
   }
   renderTabContent() {
     const { contract } = this.props
-    return [
-      () => <Methods contract={contract} />,
-      () => <Abi contract={contract} />,
-      () => <Compiled contract={contract} />,
-      () => <Source contract={contract} />,
-    ][this.state.tab]()
+    return tabs[this.state.tab].component(contract)
   }
   render() {
     const { contract } = this.props
@@ -70,6 +77,7 @@ export default class Contract extends Component {
     const thisTabAvailable = thisTab.available(contract)
     return (
       <div className="contract">
+        <Divider hidden style={{ clear: 'both' }} />
         <Header as="h2" floated="left">
           {contract.title || contract.name}
           {contract.fileName &&

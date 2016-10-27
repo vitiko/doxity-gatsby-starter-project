@@ -1,13 +1,13 @@
 import React, { PropTypes, Component } from 'react'
 
-export default class Compiled extends Component {
+export default class Bytecode extends Component {
   render() {
     const { contract } = this.props
     return (
-      <div className="compiled">
+      <div className="bytecode">
         {contract.bin &&
           <div className="bin">
-            <h3>Binary</h3>
+            <h3>Hex</h3>
             <pre className="wrap">
               <code>{contract.bin}</code>
             </pre>
@@ -26,6 +26,6 @@ export default class Compiled extends Component {
   }
 }
 
-Compiled.propTypes = {
+Bytecode.propTypes = {
   contract: PropTypes.object,
 }
