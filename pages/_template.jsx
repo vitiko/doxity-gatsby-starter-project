@@ -11,9 +11,9 @@ import ContractDropdown from '../components/contractDropdown'
 export default class Index extends Component {
   render() {
     // const activeItem = prefixLink(child.path) === this.props.location.pathname
-    const onIndex = prefixLink('/') === this.props.location.pathname;
+    const onIndex = prefixLink('/') === this.props.location.pathname
     const docsRoute = this.props.route.childRoutes.find(route => route.path === '/docs/')
-    const docsPath = docsRoute.childRoutes[0].path;
+    const docsPath = docsRoute.childRoutes[0].path
     // TODO active page
     // TODO dynamic github link
     return (
@@ -64,4 +64,5 @@ export default class Index extends Component {
 Index.propTypes = {
   children: PropTypes.object,
   location: PropTypes.object,
+  route: PropTypes.object,
 }
