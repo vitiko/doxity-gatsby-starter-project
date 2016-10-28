@@ -7,17 +7,30 @@ import '../css/hljs-atom-one.css'
 hljsDefineSolidity(hljs)
 
 export default class Source extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
   componentDidMount() {
     hljs.highlightBlock(this.refs.highlight)
+  }
+  componentWillReceiveProps() {
+    this.state = { renderHack: true }
+    setTimeout(() => {
+      this.setState({ renderHack: false })
+      hljs.highlightBlock(this.refs.highlight)
+    }, 0)
   }
   render() {
     const { contract } = this.props
     return (
       <div className="source">
         <h3>Source Code</h3>
-        <pre ref="highlight">
-          <code>{contract.source}</code>
-        </pre>
+        {!this.state.renderHack &&
+          <pre ref="highlight">
+            <code>{contract.source}</code>
+          </pre>
+        }
       </div>
     )
   }
