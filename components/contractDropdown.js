@@ -9,6 +9,11 @@ export default class ContractDropdown extends Component {
     this.state = { renderHack: false }
     this.handleClick = this.handleClick.bind(this)
   }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ renderHack: false })
+    }, 0)
+  }
   handleClick() {
     this.setState({ renderHack: true })
     setTimeout(() => {
