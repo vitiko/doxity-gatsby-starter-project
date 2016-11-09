@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 export default class ContractDropdown extends Component {
   constructor(props) {
     super(props)
-    this.state = { renderHack: false }
+    this.state = { renderHack: true }
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
