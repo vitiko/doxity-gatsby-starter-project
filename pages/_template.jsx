@@ -52,7 +52,7 @@ export default class Index extends Component {
                   <b>&copy; {config.author}</b> - {config.license}, {new Date(config.buildTime).getFullYear()}
                 </Grid.Column>
                 <Grid.Column width={10} textAlign="right">
-                  Built using <b>Solidity {config.compiler}</b> on <b>{new Date(config.buildTime).toLocaleDateString()}</b>
+                  Docs built using <b>Solidity {config.compiler}</b> on <b>{new Date(config.buildTime).toLocaleDateString()}</b>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

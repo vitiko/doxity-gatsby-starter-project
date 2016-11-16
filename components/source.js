@@ -25,7 +25,6 @@ export default class Source extends Component {
     const { contract } = this.props
     return (
       <div className="source">
-        <h3>Source Code</h3>
         {!this.state.renderHack &&
           <pre ref="highlight">
             <code>{contract.source}</code>
