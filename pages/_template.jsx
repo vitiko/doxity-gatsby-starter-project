@@ -1,16 +1,28 @@
 import React, { Component, PropTypes } from 'react'
+import Web3 from 'web3'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 import { Menu, Container, Label, Segment, Grid, Icon } from 'semantic-ui-react'
-
 import '../css/style.scss'
 
 import ContractDropdown from '../components/contractDropdown'
 
+// show web3 if config wants it
+
 export default class Index extends Component {
+  constructor(props) {
+    super(props)
+    // TODO metamask/mist?
+    if (config.interaction.providerUrl) {
+      this.web3 = new Web3()
+      this.web3.setProvider(new this.web3.providers.HttpProvider(config.interaction.providerUrl))
+    }
+  }
+  getChildContext() {
+    return { web3: this.web3 }
+  }
   render() {
-    // console.log("onIndex", this.props.location.pathname, this.props.route)
     const onIndex = prefixLink('/') === this.props.location.pathname
     const docsRoute = this.props.route.childRoutes.find(route => route.path === prefixLink('/docs/'))
     const childRoutes = docsRoute && docsRoute.childRoutes
@@ -61,6 +73,9 @@ export default class Index extends Component {
       </div>
     )
   }
+}
+Index.childContextTypes = {
+  web3: PropTypes.object,
 }
 Index.propTypes = {
   children: PropTypes.object,

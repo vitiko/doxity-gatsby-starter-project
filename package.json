@@ -9,7 +9,8 @@
     "react-document-title": "^2.0.1",
     "react-markdown": "^2.4.2",
     "semantic-ui-react": "^0.56.13",
-    "sort-by": "^1.1.1"
+    "sort-by": "^1.1.1",
+    "web3": "^0.17.0-beta"
   },
   "devDependencies": {
     "eslint": "^3.8.1",

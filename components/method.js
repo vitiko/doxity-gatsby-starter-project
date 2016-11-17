@@ -1,15 +1,52 @@
 import React, { PropTypes, Component } from 'react'
-import { Table, Segment, Label, Header } from 'semantic-ui-react'
+import { Input, Table, Segment, Label, Header } from 'semantic-ui-react'
 import ReactMarkdown from 'react-markdown'
 
 export default class Method extends Component {
-  renderParams(params, type) {
+  constructor(props) {
+    super(props)
+    this.renderParams = this.renderParams.bind(this)
+    this.handleUpdateParam = this.handleUpdateParam.bind(this)
+    this.state = { inputs: [], outputs: [] }
+  }
+  componentDidMount() {
+    if (this.props.method.type === 'function' && this.props.method.inputs.length === 0) {
+      this.handleRequest()
+    }
+  }
+  handleRequest() {
+    const { method, contract } = this.props
+    const calledMethod = contract.instance[method.name]
+    calledMethod.call.apply(calledMethod, [...this.state.inputs, (err, res) => {
+      const results = Array.isArray(res) ? res : [res]
+      // format bignumbers
+      const outputs = results.map((out) => (out.toNumber ? `${out.toNumber()}` : `${out}`))
+      this.setState({ outputs })
+    }])
+  }
+  handleUpdateParam(e, i) {
+    const { method } = this.props
+    const { inputs } = this.state
+    inputs[i] = e.target.value
+    this.setState({ inputs })
+    const ready = new Array(method.inputs.length).fill().map((k, j) => j).find(j => !this.state.inputs[j]) === undefined
+    if (ready) { this.handleRequest(method) }
+  }
+  renderParams(type) {
+    const { method, contract } = this.props
+    const { outputs } = this.state
+    const params = method[type]
     return params.map((param, i) => {
-      const inputs = type === 'Inputs'
+      const inputs = type === 'inputs'
       return (
         <Table.Row key={i} negative={!inputs} positive={inputs}>
           {i === 0 ?
-            <Table.Cell rowSpan={params.length}>{type}</Table.Cell>
+            <Table.Cell
+              style={{ textTransform: 'capitalize' }}
+              rowSpan={params.length}
+            >
+              {type}
+            </Table.Cell>
           :
             <Table.Cell style={{ display: 'none' }}>{type}</Table.Cell>
           }
@@ -21,6 +58,19 @@ export default class Method extends Component {
           <Table.Cell>
             {param.description && <ReactMarkdown source={param.description} />}
           </Table.Cell>
+          {contract.address &&
+            <Table.Cell textAlign="right">
+              {inputs ?
+                <Input
+                  className="method-input"
+                  placeholder={param.name}
+                  onChange={(e) => this.handleUpdateParam(e, i)}
+                />
+              :
+                outputs[i]
+              }
+            </Table.Cell>
+          }
         </Table.Row>
       )
     })
@@ -50,8 +100,8 @@ export default class Method extends Component {
         {(method.inputs.length || method.outputs) &&
           <Table definition>
             <Table.Body>
-              {method.inputs && this.renderParams(method.inputs, 'Inputs')}
-              {method.outputs && this.renderParams(method.outputs, 'Outputs')}
+              {method.inputs && this.renderParams('inputs')}
+              {method.outputs && this.renderParams('outputs')}
             </Table.Body>
           </Table>
         }

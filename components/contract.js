@@ -4,6 +4,7 @@ import Methods from './methods'
 import Source from './source'
 import Abi from './abi'
 import Bytecode from './bytecode'
+import ShortAddressLink from './shortAddressLink'
 
 const tabs = [
   {
@@ -47,6 +48,7 @@ export default class Contract extends Component {
     this.state = { tab: 0 }
     this.renderTab = this.renderTab.bind(this)
     this.renderTabMenu = this.renderTabMenu.bind(this)
+    // if web3, set contract instnace
   }
   handleTabClick(tab) {
     this.setState({ tab })
@@ -83,11 +85,18 @@ export default class Contract extends Component {
           {contract.fileName &&
             <Header.Subheader>
               {contract.fileName}
+              {contract.address &&
+                <div>
+                  <small>
+                    <ShortAddressLink address={contract.address} />
+                  </small>
+                </div>
+              }
             </Header.Subheader>
           }
         </Header>
         {contract.author &&
-          <Header as="h3" disabled floated="right">
+          <Header as="h3" disabled textAlign="right" floated="right">
             {contract.author}
           </Header>
         }
@@ -103,6 +112,9 @@ export default class Contract extends Component {
   }
 }
 
+Contract.contextTypes = {
+  web3: PropTypes.object,
+}
 Contract.propTypes = {
   contract: PropTypes.object,
 }

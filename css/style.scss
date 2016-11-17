@@ -58,3 +58,13 @@ pre {
 .header code.signature {
   font-size: 0.6em;
 }
+
+.ui.method-input {
+  max-width: 6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  input {
+    background: rgba(255,255,255,.7);
+  }
+}
