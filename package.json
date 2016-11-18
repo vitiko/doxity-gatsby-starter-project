@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Chris Hitchcott <hitchcott@gmail.com>",
   "dependencies": {
+    "@hitchcott/semantic-ui-react": "^0.61.1",
     "highlight.js": "^9.7.0",
     "highlightjs-solidity": "^1.0.5",
     "react-document-title": "^2.0.1",
@@ -25,7 +26,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
-    "build": "gatsby build --prefix-links"
+    "develop": "./node_modules/.bin/gatsby develop",
+    "build": "./node_modules/.bin/gatsby build --prefix-links"
   }
 }
