@@ -58,7 +58,7 @@ export default class Method extends Component {
           <Table.Cell>
             {param.description && <ReactMarkdown source={param.description} />}
           </Table.Cell>
-          {contract.address &&
+          {contract.address && method.outputs.length > 0 &&
             <Table.Cell textAlign="right">
               {inputs ?
                 <Input

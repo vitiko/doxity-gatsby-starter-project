@@ -8,7 +8,7 @@
     "highlightjs-solidity": "^1.0.5",
     "react-document-title": "^2.0.1",
     "react-markdown": "^2.4.2",
-    "semantic-ui-react": "^0.56.13",
+    "semantic-ui-react": "git://github.com/Semantic-Org/Semantic-UI-React.git#946a29cfbc246693441137c8d3a7ea994645768e",
     "sort-by": "^1.1.1",
     "web3": "^0.17.0-beta"
   },

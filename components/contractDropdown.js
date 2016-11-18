@@ -7,15 +7,8 @@ export default class ContractDropdown extends Component {
   constructor(props) {
     super(props)
     this.state = { renderHack: true }
-    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ renderHack: false })
-    }, 0)
-  }
-  handleClick() {
-    this.setState({ renderHack: true })
     setTimeout(() => {
       this.setState({ renderHack: false })
     }, 0)
@@ -31,7 +24,7 @@ export default class ContractDropdown extends Component {
               <Dropdown.Item
                 key={page.path}
                 as={Link}
-                to={page.path}
+                to={prefixLink(page.path)}
                 text={page.data.name}
                 onClick={this.handleClick}
               />
