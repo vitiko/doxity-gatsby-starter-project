@@ -9,7 +9,9 @@ export default class Methods extends Component {
     const { contract } = this.props
     return (
       <div className="methods">
-        {contract.abiDocs.sort(sortBy('type', 'name')).map((method) => {
+        {contract.abiDocs.sort(sortBy('type', 'name'))
+          .filter ((abiPart) => abiPart.type == 'function')
+          .map((method) => {
           return <Method key={`${contract.name}${method.signature}`} method={method} contract={contract} />
         })}
       </div>
