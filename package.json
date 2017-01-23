@@ -1,8 +1,12 @@
 {
-  "name": "doxity-gatsby-starter-project",
-  "description": "Doxity Example Site",
-  "version": "1.0.0",
-  "author": "Chris Hitchcott <hitchcott@gmail.com>",
+  "name": "doxity-gatsby-starter-project-ext",
+  "description": "Doxity Example Site with events, structs and enums",
+  "version": "0.1.0",
+  "author": "Chris Hitchcott <hitchcott@gmail.com>, vitiko@mail.ru",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitiko/doxity-gatsby-starter-project"
+  },
   "dependencies": {
     "@hitchcott/semantic-ui-react": "^0.61.1",
     "highlight.js": "^9.7.0",

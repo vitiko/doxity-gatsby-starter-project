@@ -4,6 +4,8 @@ import {Menu, Header, Divider, Message} from 'semantic-ui-react'
 import Methods from './methods'
 import ContractInfo from './contractInfo'
 import Events from './events'
+import Enums from './enums'
+import Structs from './structs'
 import Source from './source'
 import Abi from './abi'
 import Bytecode from './bytecode'
@@ -12,7 +14,7 @@ const tabs = [
 
   {
     text: 'ContractInfo',
-    available(contract) {
+    available() {
       return true
     },
     component(contract) {
@@ -42,6 +44,26 @@ const tabs = [
   },
 
   {
+    text: 'Structs',
+    available(contract) {
+      return contract.structure.structs && Object.keys( contract.structure.structs).length > 0
+    },
+    component(contract) {
+      return <Structs contract={contract}/>
+    },
+  },
+
+  {
+    text: 'Enums',
+    available(contract) {
+      return contract.structure.enums && Object.keys( contract.structure.enums).length > 0
+    },
+    component(contract) {
+      return <Enums contract={contract}/>
+    },
+  },
+
+  {
     text: 'ABI',
     available(contract) {
       return contract.abi && contract.abi.length > 0
@@ -50,6 +72,9 @@ const tabs = [
       return <Abi contract={contract}/>
     },
   },
+
+
+
 
 
   {
@@ -69,13 +94,13 @@ const tabs = [
       return <Source contract={contract}/>
     },
   },
-]
+];
 
 export default class Contract extends Component {
   constructor(props) {
-    super(props)
-    this.state = {tab: 0}
-    this.renderTab = this.renderTab.bind(this)
+    super(props);
+    this.state = {tab: 0};
+    this.renderTab = this.renderTab.bind(this);
     this.renderTabMenu = this.renderTabMenu.bind(this)
   }
 
@@ -84,8 +109,8 @@ export default class Contract extends Component {
   }
 
   renderTabMenu() {
-    const {contract} = this.props
-    const tabsReady = tabs.map((tab) => ({...tab, available: tab.available(contract)}))
+    const {contract} = this.props;
+    const tabsReady = tabs.map((tab) => ({...tab, available: tab.available(contract)}));
     // hide the menu if there are no tabs
     if (!tabsReady.find(tab => tab.available)) {
       return null
@@ -106,14 +131,14 @@ export default class Contract extends Component {
   }
 
   renderTabContent() {
-    const {contract} = this.props
+    const {contract} = this.props;
     return tabs[this.state.tab].component(contract)
   }
 
   render() {
-    const {contract} = this.props
-    const thisTab = tabs[this.state.tab]
-    const thisTabAvailable = thisTab.available(contract)
+    const {contract} = this.props;
+    const thisTab = tabs[this.state.tab];
+    const thisTabAvailable = thisTab.available(contract);
     return (
       <div className="contract">
         <Divider hidden style={{clear: 'both'}}/>
@@ -144,4 +169,4 @@ export default class Contract extends Component {
 
 Contract.propTypes = {
   contract: PropTypes.object,
-}
+};
